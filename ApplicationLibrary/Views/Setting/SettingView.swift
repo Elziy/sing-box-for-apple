@@ -111,9 +111,9 @@ public struct SettingView: View {
                     }
                     .buttonStyle(.plain)
                     .foregroundColor(.accentColor)
-                    RequestReviewButton {
-                        Label("Rate on the App Store", systemImage: "text.bubble.fill")
-                    }
+//                    RequestReviewButton {
+//                        Label("Rate on the App Store", systemImage: "text.bubble.fill")
+//                    }
                     #if os(macOS)
                         if Variant.useSystemExtension {
                             Tabs.sponsors.navigationLink

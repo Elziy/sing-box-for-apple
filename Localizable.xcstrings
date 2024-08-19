@@ -1290,6 +1290,7 @@
       }
     },
     "Rate on the App Store" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

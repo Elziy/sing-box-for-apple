@@ -41,7 +41,7 @@
 
         var body: some View {
             Button(action: {
-                SKStoreReviewController.requestReview()
+//                SKStoreReviewController.requestReview()
             }, label: label)
         }
     }
