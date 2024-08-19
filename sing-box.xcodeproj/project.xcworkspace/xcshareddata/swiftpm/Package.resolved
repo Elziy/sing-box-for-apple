@@ -1,24 +1,6 @@
 {
-  "originHash" : "82fb479ec8c73c3348b93e33a9102fc692bb5a0a0d6f14beb4c5f31445c36e81",
+  "originHash" : "fe95fc2322914b4f0e07ea8d1f5758b788304d068daf7f19b6e9f1e063ec9a8f",
   "pins" : [
-    {
-      "identity" : "alerttoast",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elai950/AlertToast.git",
-      "state" : {
-        "revision" : "b39252eacd159904afd7d718bba0afabb87f2f2f",
-        "version" : "1.3.9"
-      }
-    },
-    {
-      "identity" : "attributedtext",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gonzalezreal/AttributedText",
-      "state" : {
-        "revision" : "0e811cb14de367bbd58a94d12259687e5ee08bea",
-        "version" : "1.0.1"
-      }
-    },
     {
       "identity" : "binarycodable",
       "kind" : "remoteSourceControl",
@@ -26,15 +8,6 @@
       "state" : {
         "revision" : "33643e2343f591368647935d14a94e35dc2d3bf0",
         "version" : "2.0.3"
-      }
-    },
-    {
-      "identity" : "combine-schedulers",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/combine-schedulers",
-      "state" : {
-        "revision" : "ec62f32d21584214a4b27c8cee2b2ad70ab2c38a",
-        "version" : "0.11.0"
       }
     },
     {
@@ -69,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/NetworkImage",
       "state" : {
-        "revision" : "c97f83e771c95186af80ef6118f158852a9e54be",
-        "version" : "4.0.1"
+        "revision" : "7aff8d1b31148d32c5933d75557d42f6323ee3d1",
+        "version" : "6.0.0"
       }
     },
     {
@@ -83,12 +56,12 @@
       }
     },
     {
-      "identity" : "swift-concurrency-extras",
+      "identity" : "swift-markdown-ui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
+      "location" : "https://github.com/gonzalezreal/swift-markdown-ui",
       "state" : {
-        "revision" : "479750bd98fac2e813fffcf2af0728b5b0085795",
-        "version" : "0.1.1"
+        "revision" : "55441810c0f678c78ed7e2ebd46dde89228e02fc",
+        "version" : "2.4.0"
       }
     },
     {
@@ -101,30 +74,12 @@
       }
     },
     {
-      "identity" : "swiftcommonmark",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gonzalezreal/SwiftCommonMark",
-      "state" : {
-        "revision" : "ed252beaddecce28ea6363f800c773d6169011b8",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "swiftimagereadwrite",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dagronf/SwiftImageReadWrite",
       "state" : {
         "revision" : "96361ba7f9dce5184d95aba8ea90d9faa4acabb2",
         "version" : "1.6.1"
-      }
-    },
-    {
-      "identity" : "xctest-dynamic-overlay",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
-      "state" : {
-        "revision" : "50843cbb8551db836adec2290bb4bc6bac5c1865",
-        "version" : "0.9.0"
       }
     }
   ],
