@@ -156,8 +156,17 @@ public class CommandClient: ObservableObject {
                 commandClient.clashMode = newMode!
             }
         }
-        
+
+        func clearLogs() {
+
+        }
+
         func write(_ message: LibboxConnections?) {
+
+        }
+
+        func writeLogs(_ messageList: (any LibboxStringIteratorProtocol)?) {
+
         }
     }
 }

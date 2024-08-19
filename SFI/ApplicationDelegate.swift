@@ -11,23 +11,23 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         NSLog("Here I stand")
         LibboxSetup(FilePath.sharedDirectory.relativePath, FilePath.workingDirectory.relativePath, FilePath.cacheDirectory.relativePath, false)
-        setup()
+        Task {
+            await setup()
+        }
         return true
     }
 
-    private func setup() {
+    private func setup() async {
         do {
-            try UIProfileUpdateTask.configure()
+            try await UIProfileUpdateTask.configure()
             NSLog("setup background task success")
         } catch {
             NSLog("setup background task error: \(error.localizedDescription)")
         }
-        Task {
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                await requestNetworkPermission()
-            }
-            await setupBackground()
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            await requestNetworkPermission()
         }
+        await setupBackground()
     }
 
     private nonisolated func setupBackground() async {

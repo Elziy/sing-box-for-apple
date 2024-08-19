@@ -4,7 +4,24 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>io.nekohasekai.sfa.update_profiles</string>
+		<string>com.zsheep.box.update_profiles</string>
+	</array>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>AppIcon.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>sing-box Profile</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.zsheep.box.profile</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
@@ -35,7 +52,7 @@
 	</dict>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.io.nekohasekai.sfa</key>
+		<key>iCloud.com.zsheep.box</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
@@ -48,23 +65,6 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
-	</array>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>sing-box Profile</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>io.nekohasekai.sfa.profile</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>AppIcon.icns</string>
-		</dict>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -80,7 +80,7 @@
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
-			<string>io.nekohasekai.sfa.profile</string>
+			<string>com.zsheep.box.profile</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -106,7 +106,7 @@
 				<string>AppIcon.icns</string>
 			</array>
 			<key>UTTypeIdentifier</key>
-			<string>io.nekohasekai.sfa.profile</string>
+			<string>com.zsheep.box.profile</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -116,9 +116,5 @@
 			</dict>
 		</dict>
 	</array>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<true/>
-	<key>UISupportsDocumentBrowser</key>
-	<false/>
 </dict>
 </plist>

@@ -10,10 +10,10 @@
 	<true/>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>io.nekohasekai.sfa.independent</key>
-		<string>XC io nekohasekai sfa independent</string>
-		<key>io.nekohasekai.sfa.system</key>
-		<string>XC io nekohasekai sfa system</string>
+		<key>com.zsheep.box.independent</key>
+		<string>XC com zsheep box independent</string>
+		<key>com.zsheep.box.system</key>
+		<string>XC com zsheep box system</string>
 	</dict>
 </dict>
 </plist>

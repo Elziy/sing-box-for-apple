@@ -125,9 +125,12 @@ public struct ProfileView: View {
             }
         }
         .onReceive(environments.profileUpdate) { _ in
-            Task {
-                await doReload()
-            }
+            profileList = []
+            isLoading = true
+//            not updated, but why?
+//            Task {
+//                await doReload()
+//            }
         }
         #if os(iOS)
         .toolbar {
@@ -229,7 +232,7 @@ public struct ProfileView: View {
             alert = Alert(error)
             return
         }
-        environments.profileUpdate.send()
+        await doReload()
     }
 
     private func moveProfile(from source: IndexSet, to destination: Int) {
@@ -244,7 +247,6 @@ public struct ProfileView: View {
             } catch {
                 alert = Alert(error)
             }
-            environments.profileUpdate.send()
         }
     }
 
@@ -260,7 +262,6 @@ public struct ProfileView: View {
             } catch {
                 alert = Alert(error)
             }
-            environments.profileUpdate.send()
         }
     }
 

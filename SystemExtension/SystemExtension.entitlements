@@ -6,11 +6,11 @@
 	<array>
 		<string>packet-tunnel-provider-systemextension</string>
 	</array>
-	<key>com.apple.security.application-groups</key>
-	<array>
-		<string>group.io.nekohasekai.sfa</string>
-	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<false/>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.zsheep.box</string>
+	</array>
 </dict>
 </plist>

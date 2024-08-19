@@ -260,28 +260,28 @@ public class ExtensionPlatformInterface: NSObject, LibboxPlatformInterfaceProtoc
     }
 
     public func readWIFIState() -> LibboxWIFIState? {
-        #if os(iOS)
-            let network = runBlocking {
-                await NEHotspotNetwork.fetchCurrent()
-            }
-            guard let network else {
-                return nil
-            }
-            return LibboxWIFIState(network.ssid, wifiBSSID: network.bssid)!
-        #elseif os(macOS)
-            guard let interface = CWWiFiClient.shared().interface() else {
-                return nil
-            }
-            guard let ssid = interface.ssid() else {
-                return nil
-            }
-            guard let bssid = interface.bssid() else {
-                return nil
-            }
-            return LibboxWIFIState(ssid, wifiBSSID: bssid)!
-        #else
+#if os(iOS)
+        let network = runBlocking {
+            await NEHotspotNetwork.fetchCurrent()
+        }
+        guard let network else {
             return nil
-        #endif
+        }
+        return LibboxWIFIState(network.ssid, wifiBSSID: network.bssid)!
+#elseif os(macOS)
+        guard let interface = CWWiFiClient.shared().interface() else {
+            return nil
+        }
+        guard let ssid = interface.ssid() else {
+            return nil
+        }
+        guard let bssid = interface.bssid() else {
+            return nil
+        }
+        return LibboxWIFIState(ssid, wifiBSSID: bssid)!
+#else
+        return nil
+#endif
     }
 
     public func serviceReload() throws {
