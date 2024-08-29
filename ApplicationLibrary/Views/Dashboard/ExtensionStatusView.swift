@@ -28,10 +28,6 @@ public struct ExtensionStatusView: View {
                     if ApplicationLibrary.inPreview {
                         StatusItem(String(localized: "Status")) {
                             StatusLine(String(localized: "Memory"), "...")
-                            StatusLine(String(localized: "Goroutines"), "...")
-                        }
-                        StatusItem(String(localized: "Connections")) {
-                            StatusLine(String(localized: "Inbound"), "...")
                             StatusLine(String(localized: "Outbound"), "...")
                         }
                         StatusItem(String(localized: "Traffic")) {
@@ -42,32 +38,30 @@ public struct ExtensionStatusView: View {
                             StatusLine(String(localized: "Uplink"), "...")
                             StatusLine(String(localized: "Downlink"), "...")
                         }
-                    } else if let message = commandClient.status {
+                        StatusItem(String(localized: "Proxy Traffic Total")) {
+                            StatusLine(String(localized: "Proxy Uplink"), "...")
+                            StatusLine(String(localized: "Proxy Downlink"), "...")
+                        }
+                    } else if let message = commandClient.status, message.trafficAvailable {
                         StatusItem(String(localized: "Status")) {
                             StatusLine(String(localized: "Memory"), LibboxFormatMemoryBytes(message.memory))
-                            StatusLine(String(localized: "Goroutines"), "\(message.goroutines)")
-                        }
-                        StatusItem(String(localized: "Connections")) {
-                            StatusLine(String(localized: "Inbound"), "\(message.connectionsIn)")
                             StatusLine(String(localized: "Outbound"), "\(message.connectionsOut)")
                         }
-                        if message.trafficAvailable {
-                            StatusItem(String(localized: "Traffic")) {
-                                StatusLine(String(localized: "Uplink"), "\(LibboxFormatBytes(message.uplink))/s")
-                                StatusLine(String(localized: "Downlink"), "\(LibboxFormatBytes(message.downlink))/s")
-                            }
-                            StatusItem(String(localized: "Traffic Total")) {
-                                StatusLine(String(localized: "Uplink"), LibboxFormatBytes(message.uplinkTotal))
-                                StatusLine(String(localized: "Downlink"), LibboxFormatBytes(message.downlinkTotal))
-                            }
+                        StatusItem(String(localized: "Traffic")) {
+                            StatusLine(String(localized: "Uplink"), "\(LibboxFormatBytes(message.uplink))/s")
+                            StatusLine(String(localized: "Downlink"), "\(LibboxFormatBytes(message.downlink))/s")
+                        }
+                        StatusItem(String(localized: "Traffic Total")) {
+                            StatusLine(String(localized: "Uplink"), LibboxFormatBytes(message.uplinkTotal))
+                            StatusLine(String(localized: "Downlink"), LibboxFormatBytes(message.downlinkTotal))
+                        }
+                        StatusItem(String(localized: "Proxy Traffic Total")) {
+                            StatusLine(String(localized: "Proxy Uplink"), LibboxFormatBytes(message.proxyUplinkTotal))
+                            StatusLine(String(localized: "Proxy Downlink"), LibboxFormatBytes(message.proxyDownlinkTotal))
                         }
                     } else {
                         StatusItem(String(localized: "Status")) {
                             StatusLine(String(localized: "Memory"), "...")
-                            StatusLine(String(localized: "Goroutines"), "...")
-                        }
-                        StatusItem(String(localized: "Connections")) {
-                            StatusLine(String(localized: "Inbound"), "...")
                             StatusLine(String(localized: "Outbound"), "...")
                         }
                         StatusItem(String(localized: "Traffic")) {
@@ -77,6 +71,10 @@ public struct ExtensionStatusView: View {
                         StatusItem(String(localized: "Traffic Total")) {
                             StatusLine(String(localized: "Uplink"), "...")
                             StatusLine(String(localized: "Downlink"), "...")
+                        }
+                        StatusItem(String(localized: "Proxy Traffic Total")) {
+                            StatusLine(String(localized: "Proxy Uplink"), "...")
+                            StatusLine(String(localized: "Proxy Downlink"), "...")
                         }
                     }
                 }.background {

@@ -674,6 +674,7 @@
       }
     },
     "Goroutines" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1269,6 +1270,36 @@
         }
       }
     },
+    "Proxy Downlink" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "代理下载"
+          }
+        }
+      }
+    },
+    "Proxy Traffic Total" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "代理流量"
+          }
+        }
+      }
+    },
+    "Proxy Uplink" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "代理上传"
+          }
+        }
+      }
+    },
     "Quit" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1711,5 +1742,5 @@
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.10.4"
 }
