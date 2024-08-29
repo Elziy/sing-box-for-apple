@@ -29,7 +29,8 @@ public struct GroupItemView: View {
                 VStack {
                     HStack {
                         Text(item.tag)
-                            .font(.caption)
+                            .font(.headline)
+                            .fontWeight(.bold)
                             .foregroundStyle(.foreground)
                             .lineLimit(1)
                             .truncationMode(.tail)
@@ -38,7 +39,7 @@ public struct GroupItemView: View {
                     Spacer(minLength: 8)
                     HStack {
                         Text(item.displayType)
-                            .font(.caption)
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
                         Spacer(minLength: 0)
                     }
@@ -52,7 +53,7 @@ public struct GroupItemView: View {
                     Spacer(minLength: 0)
                     if item.urlTestDelay > 0 {
                         Text(item.delayString)
-                            .font(.caption)
+                            .font(.subheadline)
                             .foregroundColor(item.delayColor)
                     }
                 }

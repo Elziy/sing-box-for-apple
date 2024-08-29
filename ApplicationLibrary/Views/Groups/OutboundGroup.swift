@@ -5,6 +5,7 @@ import SwiftUI
 public struct OutboundGroup: Codable {
     let tag: String
     let type: String
+    let icon: String
     var selected: String
     let selectable: Bool
     var isExpand: Bool

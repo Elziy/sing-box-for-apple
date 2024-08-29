@@ -7,6 +7,7 @@ public struct GroupView: View {
     @State private var group: OutboundGroup
     @State private var geometryWidth: CGFloat = 300
     @State private var alert: Alert?
+    @State private var iconIsScaledDown = false
 
     public init(_ group: OutboundGroup) {
         _group = State(initialValue: group)
@@ -14,37 +15,61 @@ public struct GroupView: View {
 
     private var title: some View {
         HStack {
-            Text(group.tag)
-                .font(.headline)
-            Text(group.displayType)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            Text("\(group.items.count)")
-                .font(.subheadline)
-                .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(4)
-            Button {
+            AsyncImage(url: URL(string: group.icon)) { image in
+                image.resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .scaleEffect(iconIsScaledDown ? 0.9 : 1.0) // 0.8 表示缩小到原来的 80%
+                    .animation(.easeInOut(duration: 0.2), value: iconIsScaledDown) // 动画效果
+                    .onTapGesture {
+                        Task {
+                            await doURLTest()
+                        }
+                        withAnimation {
+                            iconIsScaledDown = true // 先缩小
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            withAnimation {
+                                iconIsScaledDown = false // 再恢复原状
+                            }
+                        }
+                    }
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 40, height: 40)
+
+            VStack{
+                Text(group.tag)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                Text(group.displayType)
+                    .font(.callout)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
+            }
+            .frame(height: 40)
+            .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 4))
+            .onTapGesture {
                 group.isExpand = !group.isExpand
                 Task {
                     await setGroupExpand()
                 }
-            } label: {
-                if group.isExpand {
-                    Image(systemName: "arrow.down.to.line")
-                } else {
-                    Image(systemName: "arrow.up.to.line")
-                }
             }
-            #if os(macOS) || os(tvOS)
-            .buttonStyle(.plain)
-            #endif
-            Button {
-                Task {
-                    await doURLTest()
-                }
-            } label: {
-                Image(systemName: "bolt.fill")
+
+            VStack{
+                Spacer()
+                Text("\(group.items.count)")
+                    .font(.headline)
+                    .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
+                    .background(Color.gray.opacity(0.5))
+                    .cornerRadius(4)
+                    .onTapGesture {
+                        group.isExpand = !group.isExpand
+                        Task {
+                            await setGroupExpand()
+                        }
+                    }
             }
             #if os(macOS) || os(tvOS)
             .buttonStyle(.plain)
@@ -65,18 +90,19 @@ public struct GroupView: View {
                     }
                 }
             } else {
-                VStack(spacing: 5) {
+                VStack(spacing: 20) {
                     ForEach(Array(itemGroups.enumerated()), id: \.offset) { items in
-                        HStack(spacing: 5) {
+                        HStack(spacing: 20) {
                             ForEach(items.element, id: \.tag) { it in
                                 ZStack {
-                                    Rectangle()
+                                    Circle()
                                         .fill(it.delayColor)
+                                        .frame(width: 25, height: 25)
                                     if it.tag == group.selected {
-                                        Rectangle()
+                                        Circle()
                                             .fill(Color.white)
                                         #if !os(tvOS)
-                                            .frame(width: 5, height: 5)
+                                            .frame(width: 15, height: 15)
                                         #else
                                             .frame(width: 15, height: 15)
                                         #endif
@@ -91,6 +117,7 @@ public struct GroupView: View {
                         }.frame(maxWidth: .infinity, alignment: .topLeading)
                     }
                 }
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
             }
         } header: {
             title
@@ -116,7 +143,7 @@ public struct GroupView: View {
         #if os(tvOS)
             count = Int(Int(geometryWidth) / 40)
         #else
-            count = Int(Int(geometryWidth) / 20)
+            count = Int(Int(geometryWidth) / 28)
         #endif
         if count == 0 {
             return [group.items]
